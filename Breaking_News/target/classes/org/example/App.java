@@ -6,6 +6,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -15,6 +16,8 @@ import javax.xml.transform.stream.StreamSource;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 
@@ -28,7 +31,18 @@ public class App
             = "src/main/resources/xml-html.xslt";
     private static String URL = "http://www.ynet.co.il/Integration/StoryRss2.xml";
 
+
+
+
     public static void main(String[] args) throws IOException {
+        URL url = new URL("http://www.ynet.co.il/Integration/StoryRss2.xml");
+        BufferedReader read = new BufferedReader(
+                new InputStreamReader(url.openStream()));
+
+        Source xml = new StreamSource(read);
+
+        StringWriter sw = new StringWriter();
+        Path newhtml_file = Files.createTempFile("result", ".html");
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -40,7 +54,7 @@ public class App
 
             // transform xml to html via a xslt file
             try (FileOutputStream output =
-                         new FileOutputStream("src/main/resources/HTML_File.html")) {
+                         new FileOutputStream(newhtml_file.toString())) {
                 transform(doc, output);
             }
 
@@ -48,8 +62,8 @@ public class App
                  SAXException | TransformerException e) {
             e.printStackTrace();
         }
-        File myfile=new File("src/main/resources/HTML_File.html");
-       // Desktop.getDesktop().open(myfile);
+        File myfile=new File(newhtml_file.toString());
+      //  Desktop.getDesktop().open(myfile);
         //Runtime.getRuntime().exec(new String[]{"bash", "-c", "/path/to/chrome http://yourwebsite.com"});
         Scanner input = new Scanner(myfile);
 
