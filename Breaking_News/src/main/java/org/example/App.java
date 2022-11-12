@@ -15,6 +15,7 @@ import javax.xml.transform.stream.StreamSource;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
+import java.util.Scanner;
 
 
 /**
@@ -48,8 +49,14 @@ public class App
             e.printStackTrace();
         }
         File myfile=new File("src/main/resources/HTML_File.html");
-        Desktop.getDesktop().open(myfile);
+       // Desktop.getDesktop().open(myfile);
+        //Runtime.getRuntime().exec(new String[]{"bash", "-c", "/path/to/chrome http://yourwebsite.com"});
+        Scanner input = new Scanner(myfile);
 
+        while (input.hasNextLine())
+        {
+            System.out.println(input.nextLine());
+        }
 
 
     }
