@@ -34,7 +34,11 @@
                     <xsl:for-each select="rss/channel/item">
                         <tr>
                             <td>
-                                <xsl:value-of select="description"/>
+                                <xsl:variable name="apos" select='"&apos;"'/>
+
+                                <img src="{translate(substring-before(substring-after(description, 'src='), 'alt='),$apos,'' )}" style="width: 120px; cursor: pointer; float: left"
+                                     onclick="toggleSize(this)" alt="page image from manuscript"/>
+                                <xsl:value-of select="substring-after(substring-after(description, 'div'), 'div>')" />
                             </td>
                             <td>
                                 <xsl:value-of select="link" />
@@ -42,6 +46,7 @@
                             <td>
                                 <xsl:value-of select="title" />
                             </td>
+
 
 
                         </tr>
