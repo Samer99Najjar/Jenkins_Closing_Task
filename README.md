@@ -25,7 +25,7 @@
 
 # Jenkins pipeline Job
 
-![alt text](https://github.com/Samer99Najjar/Jenkins_Closing_Task/blob/main/jenkinsbuilddone.png)
+![alt text](https://github.com/Samer99Najjar/Jenkins_Closing_Task/blob/main/buildimg.PNG)
 
 # Slack notification
 
