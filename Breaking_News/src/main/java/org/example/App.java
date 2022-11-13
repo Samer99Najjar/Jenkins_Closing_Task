@@ -63,7 +63,7 @@ public class App
             e.printStackTrace();
         }
         File myfile=new File(newhtml_file.toString());
-        Desktop.getDesktop().open(myfile);
+       // Desktop.getDesktop().open(myfile);
         //Runtime.getRuntime().exec(new String[]{"bash", "-c", "/path/to/chrome http://yourwebsite.com"});
         Scanner input = new Scanner(myfile);
 
