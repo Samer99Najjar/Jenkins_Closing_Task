@@ -16,7 +16,7 @@
   
 ## Run Jar File
 
- > run the jar file: java -jar target/Breaking_News-1.0-SNAPSHOT.jar
+ >  java -jar target/Breaking_News-0.0.1-SNAPSHOT.jar
  
  
 # Website Demo
